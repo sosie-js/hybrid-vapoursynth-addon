@@ -15,7 +15,7 @@ cd libass
 autoreconf -fiv
 ./configure --prefix="/usr" 
 make -j$(nproc)
-make install distclean
+sudo make install distclean
 cd ..
 
 retry_git_clone https://github.com/AmusementClub/assrender
@@ -27,9 +27,10 @@ ls
 chmod a-x libassrender.so
 strip libassrender.so
 nm -D --extern-only libassrender.so
-mkdir -p "$VSPREFIX/vsplugins"
-cp -f libassrender.so "$VSPREFIX/vsplugins/"
+sudo mkdir -p "$VSPREFIX/vsplugins"
+sudo cp -f libassrender.so "$VSPREFIX/vsplugins/"
 cd ..
 cd ..
 rm -rf assrender
 rm -rf libass
+rm -rf meson
